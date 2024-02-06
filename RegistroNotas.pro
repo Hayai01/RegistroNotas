@@ -20,8 +20,14 @@ HEADERS += \
 FORMS += \
     ingresoestudiantesform.ui \
     menuprincipal.ui
+TRANSLATIONS += \
+    de_de.ts
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    recursos.qrc

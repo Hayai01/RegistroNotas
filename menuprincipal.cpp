@@ -13,9 +13,16 @@ MenuPrincipal::MenuPrincipal(QWidget *parent)
 {
     ui->setupUi(this);
        ui->calificacionesTable->setColumnCount(6);
-       QStringList headers = {"Nombre", "Nota 1", "Nota 2", "Nota Final", "Estado", "Nota Mínima"};
+       QStringList headers = {tr("Nombre"), tr("Nota 1"), tr("Nota 2"), tr("Nota Final"), tr("Estado"), tr("Nota Mínima")};
        ui->calificacionesTable->setHorizontalHeaderLabels(headers);
-
+       this->setStyleSheet(
+           "background-color: #333333; /* Fondo gris oscuro */"
+           "color: #F2F1EB; /* Color de texto claro */"
+           "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+           "font-size: 14px; /* Tamaño de letra */"
+           "border-radius: 15px; /* Bordes muy redondeados */"
+           "QTableView { gridline-color: white; border-color: white; }"  // Establecer el color de las líneas y borde de la tabla en blanco
+       );
 }
 
 MenuPrincipal::~MenuPrincipal()
@@ -59,11 +66,11 @@ void MenuPrincipal::recibirDatosEstudiante(const QString &nombre, const QString 
 QString MenuPrincipal::calcularEstado(double notaFinal) const
 {
     if (notaFinal < 25) {
-        return "Reprobado";
+        return tr("Reprobado");
     } else if (notaFinal < 70) {
-        return "Remedial";
+        return tr("Remedial");
     } else {
-        return "Aprobado";
+        return tr("Aprobado");
     }
 }
 

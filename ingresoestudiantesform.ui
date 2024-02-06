@@ -14,8 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(94, 92, 100);</string>
+   <string notr="true"/>
   </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
