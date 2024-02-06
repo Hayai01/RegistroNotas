@@ -21,5 +21,6 @@ void IngresoEstudiantesForm::on_pushButton_released()
         double nota2 = ui->nota2LineEdit->text().toDouble();
 
         emit datosIngresados(nombre, apellido, nota1, nota2);
+        close();
 }
 

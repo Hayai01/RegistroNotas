@@ -51,6 +51,7 @@
      <string>Archivo</string>
     </property>
     <addaction name="actionRegistro"/>
+    <addaction name="actionGuardar_Datos"/>
    </widget>
    <addaction name="menuArchivo"/>
   </widget>
@@ -58,6 +59,11 @@
   <action name="actionRegistro">
    <property name="text">
     <string>Registro</string>
+   </property>
+  </action>
+  <action name="actionGuardar_Datos">
+   <property name="text">
+    <string>Guardar Datos</string>
    </property>
   </action>
  </widget>

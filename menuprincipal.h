@@ -20,8 +20,12 @@ public slots:
 private slots:
     void on_actionRegistro_triggered();
 
+    void on_actionGuardar_Datos_triggered();
+
 private:
     Ui::MenuPrincipal *ui;
     void inicializarTablaCalificaciones();
+    QString calcularEstado(double notaFinal) const;
+    double calcularNotaRemedial(double notaFinal) const;
 };
 #endif // MENUPRINCIPAL_H
