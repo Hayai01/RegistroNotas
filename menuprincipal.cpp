@@ -2,6 +2,7 @@
 #include "ui_menuprincipal.h"
 #include "ingresoestudiantesform.h"
 #include "ingresodatosform.h"
+#include "creditosform.h"
 
 #include <QFileDialog>
 #include <QTextStream>
@@ -12,17 +13,48 @@ MenuPrincipal::MenuPrincipal(QWidget *parent)
     , ui(new Ui::MenuPrincipal)
 {
     ui->setupUi(this);
+
+
+    QString styleSheet = "\
+            * { \
+                background-color: #0000000; /* Fondo gris más oscuro */ \
+                color: #FFFFFF; /* Color de texto blanco */ \
+            } \
+        QTableWidget { \
+            background-color: #333333; /* Fondo gris oscuro */ \
+            color: #F2F1EB; /* Color de texto claro */ \
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; \
+            font-size: 14px; /* Tamaño de letra */ \
+            border-radius: 15px; /* Bordes muy redondeados */ \
+        } \
+        QTableWidget QHeaderView::section { \
+            background-color: #333333; /* Fondo gris oscuro */ \
+            color: #FFFFFF; /* Color de texto blanco */ \
+            border: 1px solid #FFFFFF; /* Borde blanco */ \
+        } \
+        QTableWidget::item { \
+            border-bottom: 1px solid #FFFFFF; /* Borde inferior blanco para las celdas */ \
+        }";
+
+    ui->calificacionesTable->setStyleSheet(styleSheet);
+
+
+    this->setStyleSheet(
+               "background-color: #444444; /* Fondo gris oscuro */"
+               "color: #F2F1EB; /* Color de texto claro */"
+               "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
+               "font-size: 14px; /* Tamaño de letra */"
+               "border-radius: 15px; /* Bordes muy redondeados */"
+               );
+
+
+
        ui->calificacionesTable->setColumnCount(6);
        QStringList headers = {tr("Nombre"), tr("Nota 1"), tr("Nota 2"), tr("Nota Final"), tr("Estado"), tr("Nota Mínima")};
        ui->calificacionesTable->setHorizontalHeaderLabels(headers);
-       this->setStyleSheet(
-           "background-color: #333333; /* Fondo gris oscuro */"
-           "color: #F2F1EB; /* Color de texto claro */"
-           "font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
-           "font-size: 14px; /* Tamaño de letra */"
-           "border-radius: 15px; /* Bordes muy redondeados */"
-           "QTableView { gridline-color: white; border-color: white; }"  // Establecer el color de las líneas y borde de la tabla en blanco
-       );
+
+
+
 }
 
 MenuPrincipal::~MenuPrincipal()
@@ -61,6 +93,8 @@ void MenuPrincipal::recibirDatosEstudiante(const QString &nombre, const QString 
 
     QTableWidgetItem *itemNotaRemedial = new QTableWidgetItem(QString::number(notaRemedial));
     ui->calificacionesTable->setItem(rowCount, 5, itemNotaRemedial);
+
+
 }
 
 QString MenuPrincipal::calcularEstado(double notaFinal) const
@@ -146,5 +180,17 @@ void MenuPrincipal::on_actionGuardar_Datos_triggered()
 
 
         file.close();
+}
+
+
+void MenuPrincipal::on_actionCreditos_triggered()
+{
+    CreditosForm *c = new CreditosForm();
+
+
+        c->setWindowModality(Qt::ApplicationModal);
+
+        c->show();
+
 }
 

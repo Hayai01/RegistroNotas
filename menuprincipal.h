@@ -22,6 +22,8 @@ private slots:
 
     void on_actionGuardar_Datos_triggered();
 
+    void on_actionCreditos_triggered();
+
 private:
     Ui::MenuPrincipal *ui;
     void inicializarTablaCalificaciones();
